@@ -1,16 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import DateInformation from './components'
+import { DateInformation, NavigationBar } from './components'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
 
   return (
     <>
-    <h1>TimersUp</h1>
-    <DateInformation/>
+      <h1>TimersUp</h1>
+      <DateInformation />
+      <NavigationBar/>
     </>
   )
 }
-
-export default App
+export default App;
