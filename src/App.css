@@ -9,3 +9,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+.title-app{
+  margin: 5px 5%;
+  color: #000;
+}
