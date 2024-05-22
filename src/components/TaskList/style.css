@@ -1,0 +1,12 @@
+.task-list{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    height: calc(100% - 240px);
+}
+.task-list-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    overflow-y: scroll;
+}

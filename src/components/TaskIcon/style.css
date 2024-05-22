@@ -1,0 +1,27 @@
+
+.task-icon{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-gap: 10px;
+    height: 50px;
+    align-items: center;
+}
+.task-icon-icon{
+    background-color: #2a2f46;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: 0.7s;
+}
+.task-icon-content{
+    border-left: 2px solid #ff4500;
+    padding-left: 10px;
+}
+.task-icon-active{
+    background-color: #ff4500;
+    height: 50px;
+    width: 50px;;
+}

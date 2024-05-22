@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from 'react-bootstrap-icons';
+import { GridFill , PlusSquareFill, PieChartFill, CalculatorFill, HourglassSplit} from 'react-bootstrap-icons';
 
 import './style.css';
 
@@ -7,13 +7,19 @@ export const NavigationBar = () => {
   return (
     <nav className='navigation-bar'>
       <button>
-      <Grid color="black" size={30} />
+        <GridFill color="#f0f0f0" size={28} />
       </button>
       <button>
-        <img src="./more.png" alt="Agregar tarea" />
+        <PlusSquareFill color="#f0f0f0" size={28} />
       </button>
       <button>
-        <img src="./stats.png" alt="Lista de tareas" />
+        <PieChartFill color="#f0f0f0" size={28} />
+      </button>
+      <button>
+        <CalculatorFill color="#f0f0f0" size={28} />
+      </button>
+      <button>
+        <HourglassSplit color="#f0f0f0" size={28} />
       </button>
     </nav>
   );

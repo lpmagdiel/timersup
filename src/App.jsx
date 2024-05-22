@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import { DateInformation, NavigationBar } from './components'
+import { DateInformation, NavigationBar, TaskList } from './components'
 
 const App = () => {
   const windowHeight = window.innerHeight;
   return (
     <div className="App" style={{ height: windowHeight }}>
-      <h1 className='title-app'>TimersUp</h1>
+      <h1 className='title-app'>Timers<span className='color-orange'>Up</span></h1>
       <DateInformation />
       <NavigationBar/>
+      <TaskList/>
     </div>
   )
 }
