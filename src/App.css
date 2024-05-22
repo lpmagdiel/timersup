@@ -9,10 +9,13 @@
   margin: 0;
   box-sizing: border-box;
 }
+.App{
+  overflow: hidden;
+}
 .title-app{
   margin: 5px 5%;
   color: #fff;
 }
 .color-orange{
-  color: orangered;
+  color: #ff4500;
 }

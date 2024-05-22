@@ -3,8 +3,11 @@
     padding: 20px;
     box-sizing: border-box;
     height: calc(100% - 240px);
+    overflow: hidden;
 }
 .task-list-container{
+    width: calc(100% + 25px);
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 20px;

@@ -8,6 +8,7 @@
     align-items: center;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
+    background-color: #171a27;
 }
 .navigation-bar button{
     background-color: transparent;

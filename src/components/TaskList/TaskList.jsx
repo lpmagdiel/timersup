@@ -8,7 +8,7 @@ export const TaskList = () => {
       <div className="task-list-container">
       {
         arrt.map((e, i) => {
-          return <TaskIcon title="Limpieza narita" date="2024-05-22" time="6:20" key={i} />
+          return <TaskIcon title="Limpieza narita" date="2024-05-22" time="06:20" key={i} />
         }
         )
       }
