@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid } from 'react-bootstrap-icons';
 
 import './style.css';
 
@@ -6,7 +7,7 @@ export const NavigationBar = () => {
   return (
     <nav className='navigation-bar'>
       <button>
-        <img src="./apps.png" alt="Lista de tareas" />
+      <Grid color="black" size={30} />
       </button>
       <button>
         <img src="./more.png" alt="Agregar tarea" />
