@@ -1,0 +1,1 @@
+export const StatusPage = () => <div className="status-page">Status</div>

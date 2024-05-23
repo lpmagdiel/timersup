@@ -11,6 +11,10 @@
 }
 .date-information h1{
     display: inline-block;
+    color: #fff;
+}
+.date-information p{
+    color: #fff;
 }
 .date-information span{
     color: #808080;

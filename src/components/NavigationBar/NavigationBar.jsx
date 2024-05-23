@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { useLocation } from "wouter";
 import { GridFill , PlusSquareFill, PieChartFill, CalculatorFill, HourglassSplit} from 'react-bootstrap-icons';
 
 import './style.css';
 
 export const NavigationBar = () => {
+  const [location, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState(0);
+  const locationstring = ['/','/create', '/status', '/calculator', '/time'];
 
   const handleTabClick = (index) => {
     setActiveTab(index);
+    setLocation(locationstring[index]);
   };
 
   return (
