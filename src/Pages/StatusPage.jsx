@@ -1,1 +1,1 @@
-export const StatusPage = () => <div className="status-page">Status</div>
+export const StatusPage = () => <div className="status-page page">Status</div>

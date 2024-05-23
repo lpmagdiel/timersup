@@ -1,5 +1,5 @@
 export const TimePage = () => {
     return (
-        <div className="time-page">time</div>
+        <div className="time-page page">time</div>
     );
 }

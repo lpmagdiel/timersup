@@ -5,9 +5,9 @@ import { GridFill , PlusSquareFill, PieChartFill, CalculatorFill, HourglassSplit
 import './style.css';
 
 export const NavigationBar = () => {
-  const [location, setLocation] = useLocation();
-  const [activeTab, setActiveTab] = useState(0);
   const locationstring = ['/','/create', '/status', '/calculator', '/time'];
+  const [location, setLocation] = useLocation();
+  const [activeTab, setActiveTab] = useState(locationstring.indexOf(location));
 
   const handleTabClick = (index) => {
     setActiveTab(index);
