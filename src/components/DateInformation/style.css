@@ -1,9 +1,8 @@
 .date-information{
     margin-top: 10px;
     width: 85%;
-    height: 120px;
+    height: 100px;
     background-color: #2a2f46;
-    padding: 5px;
     margin-left: 5%;
     border-radius: 8px;
     position: relative;
@@ -12,6 +11,7 @@
 .date-information h1{
     display: inline-block;
     color: #fff;
+    padding: 20px 5px 5px 5px;
 }
 .date-information p{
     color: #fff;
@@ -25,10 +25,11 @@
     color: #fff;
     background-color: orangered;
     width: 10%;
-    height: 110px;
+    height: 100%;
     position: absolute;
     left: 95%;
-    border-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
