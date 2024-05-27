@@ -21,6 +21,12 @@
 .color-orange{
   color: #ff4500;
 }
+.tag-orange{
+  background-color: #ff4500;
+  color: #FFF;
+  padding: 5px;
+  border-radius: 8px;
+}
 .page{
   width: 100%;
   padding: 20px;

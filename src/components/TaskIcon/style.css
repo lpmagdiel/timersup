@@ -23,6 +23,10 @@
 .task-icon-content {
     border-left: 2px solid #ff4500;
     padding-left: 10px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .task-icon-active {

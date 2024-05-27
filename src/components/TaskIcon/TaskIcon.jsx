@@ -1,24 +1,46 @@
 import { ClockFill } from "react-bootstrap-icons";
 import { useState } from "react";
+import { convertSecondsString } from "../../helpers";
 import './style.css';
 
-export const TaskIcon = ({ title, date, time }) => {
+export const TaskIcon = ({ title, time }) => {
     const [isActive, setIsActive] = useState(false);
+    const [newTime, setNewTime] = useState(' + 0H 0M 0S');
+    const [timer, setTimer] = useState();
+    const [ sessionTime, setSessionTime ] = useState(time);
+    const [ seconds, setSeconds ] = useState(0);
 
 
     const handleClick = () => {
         setIsActive(!isActive);
+        changeStatusTimer();
     };
-
-    return (
-        <div className="task-icon" onClick={handleClick}>
-            <div className={`task-icon-icon ${isActive ? 'task-icon-active' : ''}`}>
-                <ClockFill color="#fff" size={22} />
-            </div>
-            <div className="task-icon-content">
-                <p><b>{title} <span className="color-orange"> {time}</span></b></p>
-                <p>{date}</p>
-            </div>
-        </div >
-    );
-}
+    const changeStatusTimer = () => {
+        if (isActive) {
+            window.clearInterval(timer);
+            setSessionTime( sessionTime+seconds);
+            setSeconds(0);
+            setNewTime('+ ' + convertSecondsString(0));
+        }
+        else {
+            let totalTime = seconds;
+            const tm = window.setInterval(() => {
+                totalTime++;
+                setNewTime('+ ' + convertSecondsString(totalTime));
+                setSeconds(totalTime);
+            },1000);
+            setTimer(tm);
+        }
+    }
+        return (
+            <div className="task-icon" onClick={handleClick}>
+                <div className={`task-icon-icon ${isActive ? 'task-icon-active' : ''}`}>
+                    <ClockFill color="#fff" size={22} />
+                </div>
+                <div className="task-icon-content">
+                    <p><b>{title}</b></p>
+                    <p><span className="tag-orange"> {convertSecondsString(sessionTime)}</span> <span className="color-orange">{newTime}</span></p>
+                </div>
+            </div >
+        );
+    }
