@@ -9,7 +9,6 @@ const App = () => {
   return (
     <div className="App" style={{ height: windowHeight }}>
       <h1 className='title-app'>Timers<span className='color-orange'>Up</span></h1>
-      <DateInformation />
       <NavigationBar />
       <Switch>
         <Route path="/" component={ResumePage}/>
