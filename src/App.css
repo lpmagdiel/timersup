@@ -30,7 +30,7 @@
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  height: calc(100% - 240px);
+  height: calc(100% - 140px);
   overflow: hidden;
 }
 
@@ -50,4 +50,13 @@
   justify-content: space-around;
   align-items: center;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+}
+table{
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table th{
+  text-align: left;
 }
