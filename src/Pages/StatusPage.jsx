@@ -1,5 +1,6 @@
 import { PieChart } from "../components";
 import { testTasks } from "../data/test";
+import { convertSecondsString } from "../helpers";
 
 export const StatusPage = () => {
     return <div className="status-page page">
@@ -9,6 +10,7 @@ export const StatusPage = () => {
             <option>Ultimo año</option>
         </select>
         <PieChart chartData={testTasks}/>
+        
         <table>
             <thead>
                 <tr>
@@ -17,10 +19,10 @@ export const StatusPage = () => {
                 </tr>
             </thead>
             <tbody>
-                {testTasks.map((task) => (
-                    <tr key={task.id}>
+                {testTasks.map((task, index) => (
+                    <tr key={`timetask${index}`}>
                         <td>{task.title}</td>
-                        <td>{task.time}</td>
+                        <td>{ convertSecondsString(task.time) }</td>
                     </tr>
                 ))}
             </tbody>
