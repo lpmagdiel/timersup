@@ -3,3 +3,5 @@ export { TaskList } from "./TaskList";
 export { NavigationBar } from "./NavigationBar";
 export { TaskIcon } from "./TaskIcon";
 export { PieChart } from "./PieChart";
+export { InputText } from "./InputText";
+export * from "./Button";

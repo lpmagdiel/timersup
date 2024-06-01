@@ -1,0 +1,13 @@
+
+.basic-btn{
+    background-color: #ff4500;
+    border: 2px solid #ff4500;
+    outline: none;
+    color: #fff;
+}
+.transparent-btn{
+    background-color: transparent;
+    border: 2px solid #ff4500;
+    outline: none;
+    color: #ff4500;
+}
