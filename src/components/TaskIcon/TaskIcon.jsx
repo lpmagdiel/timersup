@@ -3,6 +3,7 @@ import { useState } from "react";
 import { convertSecondsString } from "../../helpers";
 import { updateTimer, getTimer } from "../../data/storage";
 import './style.css';
+import { navigate } from "wouter/use-browser-location";
 
 export const TaskIcon = ({ title, time, id }) => {
     const [isActive, setIsActive] = useState(false);
@@ -18,12 +19,11 @@ export const TaskIcon = ({ title, time, id }) => {
         changeStatusTimer();
     };
     const changeStatusTimer = () => {
+        const nt = {...timerData, time: sessionTime+seconds};
         if (isActive) {
             window.clearInterval(timer);
             setSessionTime( sessionTime+seconds);
-            timerData.time = sessionTime;
-            updateTimer(timerData);
-            console.log(timerData)
+            updateTimer(nt);
             setSeconds(0);
             setNewTime('+ ' + convertSecondsString(0));
         }

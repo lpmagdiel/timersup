@@ -9,3 +9,8 @@
     border-bottom: 4px solid rgba(0,0,0,0.4);
     font-size: 1rem;
 }
+.input-text:focus,
+.input-text:active{
+    outline: none;
+    border-color: rgba(0,0,0,0.6);
+}
