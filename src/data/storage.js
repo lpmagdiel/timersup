@@ -1,10 +1,10 @@
-const getStorage = () => JSON.parse( window.localStorage.getItem('timers') );
+const getStorage = () => JSON.parse( window.localStorage.getItem('timers') ) || [];
 
 const setStorage = (timers) => window.localStorage.setItem('timers', JSON.stringify(timers));
 
 const removeStorage = () => window.localStorage.removeItem('timers');
 
-export const getTimer = (id) => getStorage().find(timer => timer.id === id);
+export const getTimer = (id) => getStorage().filter(timer => timer.id === id)[0];
 
 export const getTimers = () => getStorage();
 

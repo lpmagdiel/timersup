@@ -1,14 +1,16 @@
 import { ClockFill } from "react-bootstrap-icons";
 import { useState } from "react";
 import { convertSecondsString } from "../../helpers";
+import { updateTimer, getTimer } from "../../data/storage";
 import './style.css';
 
-export const TaskIcon = ({ title, time }) => {
+export const TaskIcon = ({ title, time, id }) => {
     const [isActive, setIsActive] = useState(false);
     const [newTime, setNewTime] = useState(' + 0H 0M 0S');
     const [timer, setTimer] = useState();
     const [ sessionTime, setSessionTime ] = useState(time);
     const [ seconds, setSeconds ] = useState(0);
+    const timerData = getTimer(id);
 
 
     const handleClick = () => {
@@ -19,6 +21,9 @@ export const TaskIcon = ({ title, time }) => {
         if (isActive) {
             window.clearInterval(timer);
             setSessionTime( sessionTime+seconds);
+            timerData.time = sessionTime;
+            updateTimer(timerData);
+            console.log(timerData)
             setSeconds(0);
             setNewTime('+ ' + convertSecondsString(0));
         }
