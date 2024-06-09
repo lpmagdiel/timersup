@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Calendar2WeekFill, ChatSquareTextFill, GeoAltFill } from "react-bootstrap-icons";
+import { navigate } from "wouter/use-browser-location";
 import "../styles/addPage.css";
 import { InputText, BasicButton, TransparentButton } from "../components";
 import { TimerStructure } from "../data/structure";
@@ -38,6 +39,7 @@ export const AddPage = () => {
     }
     console.log(task);
     addTimer(task);
+    navigate("/");
   }
   const getLocation = () => {
     setUbicationText('Obteniendo ubicación...');

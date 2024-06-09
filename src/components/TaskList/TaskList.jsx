@@ -7,8 +7,8 @@ export const TaskList = () => {
   return (
     <div className='task-list'>
       {
-        tasks.map( ({name, time, id}) => {
-          return <TaskIcon title={name} time={time} key={id} id={id} />
+        tasks.map( ({id}) => {
+          return <TaskIcon key={id} id={id} />
         }
         )
       }

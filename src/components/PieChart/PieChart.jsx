@@ -7,7 +7,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export const PieChart = ({ chartData }) => {
     const colors = chartData.map(item => "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0") );
     const [data, setData] = useState({
-        labels: chartData.map(item => item.title),
+        labels: chartData.map(item => item.name),
         datasets: [
           {
             label: 'Segundos..',

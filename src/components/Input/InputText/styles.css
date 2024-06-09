@@ -12,5 +12,5 @@
 .input-text:focus,
 .input-text:active{
     outline: none;
-    border-color: rgba(0,0,0,0.6);
+    border-color: rgba(0,0,0,0.8);
 }

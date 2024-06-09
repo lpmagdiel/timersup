@@ -9,3 +9,5 @@ export const convertSecondsString = s => {
     const { hours, minutes, seconds } = convertSeconds(s);
     return `${hours}H ${minutes}M ${seconds}S`;
 }
+
+export const getNow = () => Math.floor(Date.now() / 1000);

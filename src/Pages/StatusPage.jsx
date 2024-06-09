@@ -1,15 +1,16 @@
 import { PieChart } from "../components";
-import { testTasks } from "../data/test";
+import { getTimers } from "../data/storage";
 import { convertSecondsString } from "../helpers";
 
 export const StatusPage = () => {
+    const timers = getTimers();
     return <div className="status-page page">
         <select>
             <option>Ultima semana</option>
             <option>Ultimo mes</option>
             <option>Ultimo año</option>
         </select>
-        <PieChart chartData={testTasks}/>
+        <PieChart chartData={timers}/>
         
         <table>
             <thead>
@@ -19,9 +20,9 @@ export const StatusPage = () => {
                 </tr>
             </thead>
             <tbody>
-                {testTasks.map((task, index) => (
+                {timers.map((task, index) => (
                     <tr key={`timetask${index}`}>
-                        <td>{task.title}</td>
+                        <td>{task.name}</td>
                         <td>{ convertSecondsString(task.time) }</td>
                     </tr>
                 ))}
