@@ -6,7 +6,7 @@ export const TimePage = () => {
         <div className="time-page page">
             {
                 timers.map(timer => (
-                    <p>{timer.name} : {convertSecondsString(timer.time)}</p>))
+                    <p key={timer.id}>{timer.name} : {convertSecondsString(timer.time)}</p>))
             }
         </div>
     );

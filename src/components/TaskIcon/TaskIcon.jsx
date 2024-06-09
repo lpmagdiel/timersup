@@ -1,5 +1,5 @@
 import { ClockFill } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { updateTimer, getTimer } from "../../data/storage";
 import { getNow } from "../../helpers";
 import './style.css';
@@ -13,17 +13,22 @@ export const TaskIcon = ({ id }) => {
         if (isActive) {
             const {startTime, time} = getTimer(id);
             const nt = getNow() - startTime;
-            updateTimer({...timerData, time:nt+time});
-            setSessionTime("inactivo");
+            updateTimer({...timerData, time:nt+time, active:false});
+            setSessionTime("Inactivo");
             setIsActive(false);
         }
         else {
-            const nt = { ...timerData, startTime: getNow() };
+            const nt = { ...timerData, startTime: getNow(), active: true };
             setSessionTime("Activo");
             updateTimer(nt);
             setIsActive(true);
         }
     };
+
+    useEffect(()=>{
+        setIsActive( getTimer(id).active );
+        setSessionTime( getTimer(id).active?"Activo":"Inactivo");
+    },[]);
 
     return (
         <div className="task-icon" onClick={handleClick}>

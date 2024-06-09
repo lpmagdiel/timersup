@@ -7,7 +7,7 @@ export const TimerStructure = {
     description: 'description',
     startTime: 0,
     time : 0,
-    status : 0,
+    active : false,
     location : '',
     date : defaultDate()
 }
