@@ -1,1 +1,0 @@
-export { DateInformation } from './DateInformation';

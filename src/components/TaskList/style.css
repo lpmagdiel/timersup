@@ -1,6 +1,0 @@
-.task-list{
-    width: 100%;
-    height: calc( 100% - 90px);
-    overflow-y: scroll;
-    padding: 4px;
-}

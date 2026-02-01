@@ -1,1 +1,0 @@
-export { TaskIcon } from './TaskIcon';
