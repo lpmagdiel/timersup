@@ -1,5 +1,5 @@
 <script>
-  import { tasks } from "../lib/stores";
+  import { tasks, settings } from "../lib/stores";
   import SimpleItem from "../lib/SimpleItem.svelte";
   import {
     Share2,
@@ -12,7 +12,12 @@
   } from "lucide-svelte";
 
   let mode = "manual"; // 'manual' | 'calendar'
-  let hourlyRate = 10.0;
+
+  // Local variable for two-way binding, synced with store
+  let hourlyRate = $settings.hourlyRate;
+
+  // Sync local changes back to store
+  $: settings.update((s) => ({ ...s, hourlyRate }));
 
   // Saved Calculations
   let savedCalculations = [];
@@ -165,25 +170,42 @@
 
 <div class="content">
   {#if mode === "manual"}
-    <div class="rate-input-container">
-      <label>Tarifa por Hora (€)</label>
-      <div class="rate-input-wrapper">
-        <DollarSign size={20} class="currency-icon" />
-        <input type="number" bind:value={hourlyRate} step="0.5" />
+    <div class="manual-inputs-row">
+      <div class="input-group">
+        <label>Tarifa Hora (€)</label>
+        <div class="input-wrapper">
+          <DollarSign size={20} class="currency-icon" />
+          <input type="number" bind:value={hourlyRate} step="0.5" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Digitando</label>
+        <div class="input-wrapper highlight">
+          <Clock size={20} class="currency-icon" />
+          <div class="current-value">{inputString}</div>
+        </div>
       </div>
     </div>
   {/if}
 
   <div class="cards-row">
     <div class="card time-card">
-      <div class="card-icon"><Clock size={20} color="#3b82f6" /></div>
-      <span class="label">{displayLabel}</span>
+      <div>
+        <Clock size={20} color="#3b82f6" />
+        <span class="label">{displayLabel}</span>
+      </div>
       <div class="value">{displayTime} <small>{displayUnit}</small></div>
     </div>
     <div class="card pay-card">
-      <div class="card-icon"><DollarSign size={20} color="#39ab92" /></div>
-      <span class="label">Pago Est.</span>
-      <div class="value primary-text">${displayPay}</div>
+      <div>
+        <DollarSign size={20} color="#39ab92" />
+        <span class="label">Pago Est.</span>
+      </div>
+      <div class="value primary-text">
+        <DollarSign size={20} color="#39ab92" />
+        {displayPay}
+      </div>
       <div class="bg-icon"><DollarSign size={60} /></div>
     </div>
   </div>
@@ -301,30 +323,46 @@
     color: var(--primary-color);
   }
 
-  .rate-input-container {
+  .manual-inputs-row {
+    display: flex;
+    gap: 12px;
     margin-bottom: 24px;
   }
-  .rate-input-container label {
+  .input-group {
+    flex: 1;
+  }
+  .input-group label {
     display: block;
     margin-bottom: 8px;
     opacity: 0.8;
+    font-size: 0.85rem;
   }
-  .rate-input-wrapper {
+  .input-wrapper {
     background-color: var(--box-background-color);
     border-radius: 12px;
-    padding: 16px;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    min-height: 50px;
   }
-  .rate-input-wrapper input {
+  .input-wrapper.highlight {
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+  .input-wrapper input {
     background: none;
     border: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     width: 100%;
     outline: none;
+  }
+  .current-value {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex: 1;
   }
   .currency-icon {
     color: var(--icon-color);
@@ -343,16 +381,14 @@
     padding: 20px;
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 120px;
+    display: grid;
+    height: 100px;
   }
   .card-icon {
     margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
   }
   .label {
     font-size: 0.9rem;
@@ -372,6 +408,7 @@
   .primary-text {
     color: var(--primary-color);
   }
+
   .pay-card .bg-icon {
     position: absolute;
     right: -10px;
@@ -383,18 +420,30 @@
   .time-card {
     border: 1px solid rgba(59, 130, 246, 0.3); /* Blue hint matching icon */
   }
+  .time-card > div:first-child,
+  .pay-card > div:first-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+  .time-card > div:first-child span,
+  .pay-card > div:first-child span {
+    padding: 0;
+    margin: 0;
+  }
 
   .keypad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 8px;
     margin-bottom: 80px;
   }
   .key {
     background-color: var(--box-background-color);
     border: none;
     border-radius: 12px;
-    padding: 20px;
+    padding: 12px;
     font-size: 1.5rem;
     color: white;
     cursor: pointer;

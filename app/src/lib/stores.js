@@ -27,3 +27,12 @@ export const tasks = writable(storedTasks ? JSON.parse(storedTasks) : []);
 tasks.subscribe((value) => {
     localStorage.setItem('tasks', JSON.stringify(value));
 });
+
+const storedSettings = localStorage.getItem('settings');
+export const settings = writable(storedSettings ? JSON.parse(storedSettings) : {
+    hourlyRate: 10.0
+});
+
+settings.subscribe((value) => {
+    localStorage.setItem('settings', JSON.stringify(value));
+});

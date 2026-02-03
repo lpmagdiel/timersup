@@ -20,7 +20,7 @@
   let newTask = {
     name: "",
     description: "",
-    price: "",
+    price: 0,
     locationId: "",
     type: "once", // 'once' | 'recurrent'
     extraHours: 0,
@@ -54,7 +54,7 @@
     newTask = {
       name: "",
       description: "",
-      price: "",
+      price: 0,
       locationId: "",
       type: "once",
       extraHours: 0,
@@ -63,7 +63,7 @@
   }
 
   function saveTask() {
-    if (!newTask.name || !newTask.price) return;
+    if (!newTask.name) return;
 
     tasks.update((ts) => [
       ...ts,
@@ -97,7 +97,17 @@
   function addExtraHour(task) {
     tasks.update((ts) =>
       ts.map((t) =>
-        t.id === task.id ? { ...t, extraHours: (t.extraHours || 0) + 1 } : t,
+        t.id === task.id ? { ...t, extraHours: (t.extraHours || 0) + 0.5 } : t,
+      ),
+    );
+  }
+
+  function subtractExtraHour(task) {
+    tasks.update((ts) =>
+      ts.map((t) =>
+        t.id === task.id
+          ? { ...t, extraHours: Math.max(0, (t.extraHours || 0) - 0.5) }
+          : t,
       ),
     );
   }
@@ -187,9 +197,14 @@
           <div class="actions">
             <div class="extra-hours">
               <small>Extras: {task.extraHours || 0}h</small>
-              <button on:click={() => addExtraHour(task)}
-                ><Plus size={14} /></button
-              >
+              <div class="hours-controls">
+                <button on:click={() => subtractExtraHour(task)}
+                  ><span>−</span></button
+                >
+                <button on:click={() => addExtraHour(task)}
+                  ><Plus size={14} /></button
+                >
+              </div>
             </div>
             <div class="main-actions">
               <button
@@ -412,6 +427,10 @@
     padding: 4px 8px;
     border-radius: 8px;
   }
+  .hours-controls {
+    display: flex;
+    gap: 4px;
+  }
   .extra-hours button {
     background: var(--primary-color);
     border: none;
@@ -423,6 +442,13 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .extra-hours button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .main-actions {
